@@ -16,10 +16,9 @@ app.listen(4000,() => {
   console.log('app listening on port 4000');
 })
 
-app.post('/posts/store', (req,res) => {
-  BlogPost.create(req.body,(error,blogpost) => {
-  res.redirect('/')
-  })
+app.post('/posts/store', async (req,res) => {
+  await BlogPost.create(req.body);
+  res.redirect('/');
 });
 
 app.get('/', (req,res) => {
