@@ -30,9 +30,10 @@ app.get('/post/:id' ,async (req,res) => {
 app.post('/posts/store', (req,res) => {
    // console.log(req.body);
    let image = req.files.image;
-   image.mv(path.resolve(__dirname,'public/img', image.name),async (error) => {
-     await BlogPost.create(req.body);
-       res.redirect('/')
+   image.mv(path.resolve(__dirname,'public/img',image.name),async (error) => {
+     await BlogPost.create({...req.body,
+     image: '/img/' + image.name});
+      res.redirect('/')
    })
 })
 
