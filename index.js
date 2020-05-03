@@ -6,10 +6,24 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const fileUpload = require('express-fileupload');
 const BlogPost = require('./models/BlogPost.js');
+const customMiddleWare = (req,res,next) =>{
+  console.log('Custom middle ware called')
+  next();
+}
+const validateMiddleWare = (req,res,next)=>{
+  if(req.files == null || req.body.title == null || req.body.title == null){
+    return res.redirect('/posts/new');
+  }
+  next();
+}
+
 
 app.use(fileUpload());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
+app.use(customMiddleWare);
+app.use('/posts/store',validateMiddleWare);
+
 
 
 mongoose.connect('mongodb://localhost/my_database', {useNewUrlParser: true});
