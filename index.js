@@ -1,12 +1,20 @@
 const express = require('express');
 const app = new express();
-const path = require('path');
+// const path = require('path');
 const ejs = require('ejs');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const fileUpload = require('express-fileupload');
-const BlogPost = require('./models/BlogPost.js');
+// const BlogPost = require('./models/BlogPost.js');
+
+//controllers
 const newPostController = require('./controllers/newPost');
+const homeController = require('./controllers/home');
+const storePostController = require('./controllers/storePost');
+const getPostController = require('./controllers/getPost');
+
+//middleware
+
 const customMiddleWare = (req,res,next) =>{
   console.log('Custom middle ware called')
   next();
@@ -35,39 +43,32 @@ app.listen(4000,() => {
   console.log('app listening on port 4000');
 })
 
-app.get('/post/:id' ,async (req,res) => {
-  const blogpost = await BlogPost.findById(req.params.id)
-  res.render('post', {
-    blogpost
-  })
-})
+// app.get('/post/:id' ,async (req,res) => {
+//   const blogpost = await BlogPost.findById(req.params.id)
+//   res.render('post', {
+//     blogpost
+//   })
+// })
 
-app.post('/posts/store', (req,res) => {
-   // console.log(req.body);
-   let image = req.files.image;
-   image.mv(path.resolve(__dirname,'public/img',image.name),async (error) => {
-     await BlogPost.create({...req.body,
-     image: '/img/' + image.name});
-      res.redirect('/')
-   })
-})
+// app.post('/posts/store', (req,res) => {
+//    // console.log(req.body);
+//    let image = req.files.image;
+//    image.mv(path.resolve(__dirname,'public/img',image.name),async (error) => {
+//      await BlogPost.create({...req.body,
+//      image: '/img/' + image.name});
+//       res.redirect('/')
+//    })
+// })
+//
+// app.get('/', async (req,res) => {
+//   const blogposts = await BlogPost.find({})
+//   res.render('index', {
+//     blogposts
+//   });
+//   console.log(blogposts)
+// })
 
-app.get('/', async (req,res) => {
-  const blogposts = await BlogPost.find({})
-  res.render('index', {
-    blogposts
-  });
-  console.log(blogposts)
-})
-
-app.get('/about', (req,res) => {
-  // res.sendFile(path.resolve(__dirname,'pages/about.html'));
-  res.render('about');
-});
-
+app.post('/posts/store', storePostController);
+app.get('/post/:id', getPostController);
+app.get('/', homeController);
 app.get('/posts/new', newPostController);
-
-app.get('/contact',(req,res) => {
-  // res.sendFile(path.resolve(__dirname,'pages/contact.html'));
-  res.render('contact');
-});
