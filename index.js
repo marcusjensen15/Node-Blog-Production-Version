@@ -5,6 +5,7 @@ const ejs = require('ejs');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const fileUpload = require('express-fileupload');
+const expressSession = require('express-session');
 // const BlogPost = require('./models/BlogPost.js');
 
 //controllers
@@ -38,6 +39,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(customMiddleWare);
 app.use('/posts/store',validateMiddleWare);
+app.use(expressSession({
+  secret: 'keybord cat'
+}))
 
 
 
