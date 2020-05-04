@@ -13,6 +13,7 @@ const homeController = require('./controllers/home');
 const storePostController = require('./controllers/storePost');
 const getPostController = require('./controllers/getPost');
 const newUserController = require('./controllers/newUser');
+const storeUserController = require('./controllers/storeUser');
 
 //middleware
 const validateMiddleWare = require('./middleware/validationMiddleware');
@@ -48,6 +49,8 @@ app.listen(4000,() => {
 
 
 app.post('/posts/store', storePostController);
+app.post('/users/register', storeUserController);
+
 app.get('/post/:id', getPostController);
 app.get('/', homeController);
 app.get('/posts/new', newPostController);
