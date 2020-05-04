@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const fileUpload = require('express-fileupload');
 const BlogPost = require('./models/BlogPost.js');
+const newPostController = require('./controllers/newPost');
 const customMiddleWare = (req,res,next) =>{
   console.log('Custom middle ware called')
   next();
@@ -64,9 +65,7 @@ app.get('/about', (req,res) => {
   res.render('about');
 });
 
-app.get('/posts/new', (req,res) => {
-  res.render('create');
-});
+app.get('/posts/new', newPostController);
 
 app.get('/contact',(req,res) => {
   // res.sendFile(path.resolve(__dirname,'pages/contact.html'));
