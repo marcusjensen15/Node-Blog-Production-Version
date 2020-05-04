@@ -14,17 +14,18 @@ const storePostController = require('./controllers/storePost');
 const getPostController = require('./controllers/getPost');
 
 //middleware
+const validateMiddleWare = require('./middleware/validationMiddleware');
 
 const customMiddleWare = (req,res,next) =>{
   console.log('Custom middle ware called')
   next();
 }
-const validateMiddleWare = (req,res,next)=>{
-  if(req.files == null || req.body.title == null || req.body.title == null){
-    return res.redirect('/posts/new');
-  }
-  next();
-}
+// const validateMiddleWare = (req,res,next)=>{
+//   if(req.files == null || req.body.title == null || req.body.title == null){
+//     return res.redirect('/posts/new');
+//   }
+//   next();
+// }
 
 
 app.use(fileUpload());
@@ -43,30 +44,7 @@ app.listen(4000,() => {
   console.log('app listening on port 4000');
 })
 
-// app.get('/post/:id' ,async (req,res) => {
-//   const blogpost = await BlogPost.findById(req.params.id)
-//   res.render('post', {
-//     blogpost
-//   })
-// })
 
-// app.post('/posts/store', (req,res) => {
-//    // console.log(req.body);
-//    let image = req.files.image;
-//    image.mv(path.resolve(__dirname,'public/img',image.name),async (error) => {
-//      await BlogPost.create({...req.body,
-//      image: '/img/' + image.name});
-//       res.redirect('/')
-//    })
-// })
-//
-// app.get('/', async (req,res) => {
-//   const blogposts = await BlogPost.find({})
-//   res.render('index', {
-//     blogposts
-//   });
-//   console.log(blogposts)
-// })
 
 app.post('/posts/store', storePostController);
 app.get('/post/:id', getPostController);
