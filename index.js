@@ -17,6 +17,7 @@ const newUserController = require('./controllers/newUser');
 const storeUserController = require('./controllers/storeUser');
 const loginController = require('./controllers/login');
 const loginUserController = require('./controllers/loginUser');
+const logoutController = require('./controllers/logout');
 
 //global login
 
@@ -74,3 +75,5 @@ app.get('/posts/new', newPostController);
 app.get('/auth/register', redirectIfAuthenticatedMiddleware, newUserController);
 app.get('/auth/login', redirectIfAuthenticatedMiddleware, loginController);
 app.get('/posts/new', authMiddleware, newPostController);
+app.get('/auth/logout', logoutController);
+app.use((req, res) => res.render('notfound'));
