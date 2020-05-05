@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const fileUpload = require('express-fileupload');
 const expressSession = require('express-session');
+const flash = require('connect-flash');
 // const BlogPost = require('./models/BlogPost.js');
 
 //controllers
@@ -39,7 +40,7 @@ const customMiddleWare = (req,res,next) =>{
 //   next();
 // }
 
-
+app.use(flash());
 app.use(fileUpload());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
@@ -52,6 +53,7 @@ app.use("*", (req, res, next) => {
   loggedIn = req.session.userId
   next()
 });
+
 
 
 mongoose.connect('mongodb://localhost/my_database', {useNewUrlParser: true});
