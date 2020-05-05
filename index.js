@@ -18,7 +18,9 @@ const storeUserController = require('./controllers/storeUser');
 const loginController = require('./controllers/login');
 const loginUserController = require('./controllers/loginUser');
 
+//global login
 
+global.loggedIn = null;
 
 //middleware
 const validateMiddleWare = require('./middleware/validationMiddleware');
@@ -45,7 +47,10 @@ app.use('/posts/store',validateMiddleWare);
 app.use(expressSession({
   secret: 'keybord cat'
 }))
-
+app.use("*", (req, res, next) => {
+  loggedIn = req.session.userId
+  next()
+});
 
 
 mongoose.connect('mongodb://localhost/my_database', {useNewUrlParser: true});
