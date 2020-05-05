@@ -19,8 +19,10 @@ const loginController = require('./controllers/login');
 const loginUserController = require('./controllers/loginUser');
 
 
+
 //middleware
 const validateMiddleWare = require('./middleware/validationMiddleware');
+const redirectIfAuthenticatedMiddleware = require('./middleware/redirectIfAuthenticatedMiddleware');
 const authMiddleware = require('./middleware/authMiddleware');
 
 const customMiddleWare = (req,res,next) =>{
@@ -57,13 +59,13 @@ app.listen(4000,() => {
 
 
 app.post('/posts/store', storePostController);
-app.post('/users/register', storeUserController);
-app.post('/users/login', loginUserController);
+app.post('/users/register', redirectIfAuthenticatedMiddleware, storeUserController);
+app.post('/users/login', redirectIfAuthenticatedMiddleware, loginUserController);
 app.post('/posts/store', authMiddleware, storePostController);
 
 app.get('/post/:id', getPostController);
 app.get('/', homeController);
 app.get('/posts/new', newPostController);
-app.get('/auth/register', newUserController);
-app.get('/auth/login', loginController);
+app.get('/auth/register', redirectIfAuthenticatedMiddleware, newUserController);
+app.get('/auth/login', redirectIfAuthenticatedMiddleware, loginController);
 app.get('/posts/new', authMiddleware, newPostController);
