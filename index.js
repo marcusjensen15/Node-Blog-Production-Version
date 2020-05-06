@@ -7,6 +7,8 @@ const bodyParser = require('body-parser');
 const fileUpload = require('express-fileupload');
 const expressSession = require('express-session');
 const flash = require('connect-flash');
+// const summernote = require('summernote');
+
 // const BlogPost = require('./models/BlogPost.js');
 
 //controllers
