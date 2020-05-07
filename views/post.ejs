@@ -23,31 +23,33 @@
             <span class="meta">Posted by
               <a href="#"><%= blogpost.userid.username %></a>
               on <%= blogpost.datePosted.toDateString() %> </span>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </header>
+    </header>
 
-  <!-- Post Content -->
-  <article>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
-          <%- blogpost.body %>
-      </div>
-    </div>
-  </article>
+    <!-- Post Content -->
+    <article>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <%- blogpost.body %>
+          </div>
+        </div>
+      </article>
 
-  <hr>
-  <div class="form-group">
-    <button type="submit" class="btn btn-primary" id="sendMessageButton">Edit Post</button>
-  </div>
+      <hr>
+      <% if(loggedIn) { %>
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary" id="sendMessageButton">Edit Post</button>
+        </div>
+        <% } %>
 
-  <!-- Footer -->
-  <%- include('layouts/footer'); -%>
-  <%- include('layouts/scripts'); -%>
+        <!-- Footer -->
+        <%- include('layouts/footer'); -%>
+        <%- include('layouts/scripts'); -%>
 
-</body>
+      </body>
 
-</html>
+      </html>
