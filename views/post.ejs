@@ -23,28 +23,43 @@
             <span class="meta">Posted by
               <a href="#"><%= blogpost.userid.username %></a>
               on <%= blogpost.datePosted.toDateString() %> </span>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </header>
+    </header>
 
-  <!-- Post Content -->
-  <article>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
-          <%- blogpost.body %>
-      </div>
-    </div>
-  </article>
+    <!-- Post Content -->
+    <article>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <%- blogpost.body %>
+          </div>
+        </div>
+      </article>
 
-  <hr>
+      <hr>
+      <% if(loggedIn) { %>
 
-  <!-- Footer -->
-  <%- include('layouts/footer'); -%>
-  <%- include('layouts/scripts'); -%>
+        <form action="/post/<%=blogpost._id %>/edit" method="GET" enctype="multipart/form-data">
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary" id="sendMessageButton">Edit Post</button>
+          </div>
+        </form>
 
-</body>
 
-</html>
+        <form action="/post/<%=blogpost._id %>" method="POST" enctype="multipart/form-data">
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary" id="sendMessageButton">Delete</button>
+          </div>
+        </form>
+        <% } %>
+
+        <!-- Footer -->
+        <%- include('layouts/footer'); -%>
+        <%- include('layouts/scripts'); -%>
+
+      </body>
+
+      </html>

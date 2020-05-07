@@ -21,6 +21,8 @@ const storeUserController = require('./controllers/storeUser');
 const loginController = require('./controllers/login');
 const loginUserController = require('./controllers/loginUser');
 const logoutController = require('./controllers/logout');
+const editPostController = require('./controllers/editPost');
+const deletePostController = require('./controllers/delete');
 
 //global login
 
@@ -48,6 +50,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(customMiddleWare);
 app.use('/posts/store',validateMiddleWare);
+
 app.use(expressSession({
   secret: 'keybord cat'
 }))
@@ -68,7 +71,7 @@ app.listen(4000,() => {
 
 
 
-app.post('/posts/store', storePostController);
+// app.post('/posts/store', storePostController);
 app.post('/users/register', redirectIfAuthenticatedMiddleware, storeUserController);
 app.post('/users/login', redirectIfAuthenticatedMiddleware, loginUserController);
 app.post('/posts/store', authMiddleware, storePostController);
@@ -80,4 +83,15 @@ app.get('/auth/register', redirectIfAuthenticatedMiddleware, newUserController);
 app.get('/auth/login', redirectIfAuthenticatedMiddleware, loginController);
 app.get('/posts/new', authMiddleware, newPostController);
 app.get('/auth/logout', logoutController);
+
+// get for edit route
+
+app.get('/post/:id/edit', editPostController);
+
+//delete route
+
+app.post('/post/:id', deletePostController);
+
+
+
 app.use((req, res) => res.render('notfound'));
