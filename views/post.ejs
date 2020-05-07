@@ -41,17 +41,20 @@
 
       <hr>
       <% if(loggedIn) { %>
-        <div class="form-group">
 
-          <a class="nav-link" href="/post/<%=blogpost._id %>/edit"> Edit This Post</a>
+        <form action="/post/<%=blogpost._id %>/edit" method="GET" enctype="multipart/form-data">
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary" id="sendMessageButton">Edit Post</button>
+          </div>
+        </form>
 
-        </div>
 
         <form action="/post/<%=blogpost._id %>" method="POST" enctype="multipart/form-data">
           <div class="form-group">
             <button type="submit" class="btn btn-primary" id="sendMessageButton">Delete</button>
           </div>
-          <% } %>
+        </form>
+        <% } %>
 
         <!-- Footer -->
         <%- include('layouts/footer'); -%>
