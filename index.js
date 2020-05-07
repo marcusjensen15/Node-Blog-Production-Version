@@ -22,6 +22,7 @@ const loginController = require('./controllers/login');
 const loginUserController = require('./controllers/loginUser');
 const logoutController = require('./controllers/logout');
 const editPostController = require('./controllers/editPost');
+const deletePostController = require('./controllers/delete');
 
 //global login
 
@@ -85,6 +86,10 @@ app.get('/auth/logout', logoutController);
 // get for edit route
 
 app.get('/post/:id/edit', editPostController);
+
+//delete route
+
+app.post('/post/:id', deletePostController);
 
 
 
