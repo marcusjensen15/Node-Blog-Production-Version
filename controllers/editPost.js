@@ -9,4 +9,5 @@ module.exports = async (req,res)=>{
     createPost: true,
     blogpost
   });
+  await BlogPost.findByIdAndDelete(req.params.id);
 }
