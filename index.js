@@ -50,6 +50,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(customMiddleWare);
 app.use('/posts/store',validateMiddleWare);
+
 app.use(expressSession({
   secret: 'keybord cat'
 }))
