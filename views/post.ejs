@@ -42,7 +42,9 @@
       <hr>
       <% if(loggedIn) { %>
         <div class="form-group">
-          <button type="submit" class="btn btn-primary" id="sendMessageButton">Edit Post</button>
+
+          <a class="nav-link" href="/post/<%=blogpost._id %>/edit"> Edit This Post</a>
+
         </div>
         <% } %>
 

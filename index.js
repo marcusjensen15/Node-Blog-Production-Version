@@ -21,6 +21,7 @@ const storeUserController = require('./controllers/storeUser');
 const loginController = require('./controllers/login');
 const loginUserController = require('./controllers/loginUser');
 const logoutController = require('./controllers/logout');
+const editPostController = require('./controllers/editPost');
 
 //global login
 
@@ -68,7 +69,7 @@ app.listen(4000,() => {
 
 
 
-app.post('/posts/store', storePostController);
+// app.post('/posts/store', storePostController);
 app.post('/users/register', redirectIfAuthenticatedMiddleware, storeUserController);
 app.post('/users/login', redirectIfAuthenticatedMiddleware, loginUserController);
 app.post('/posts/store', authMiddleware, storePostController);
@@ -80,4 +81,11 @@ app.get('/auth/register', redirectIfAuthenticatedMiddleware, newUserController);
 app.get('/auth/login', redirectIfAuthenticatedMiddleware, loginController);
 app.get('/posts/new', authMiddleware, newPostController);
 app.get('/auth/logout', logoutController);
+
+// get for edit route
+
+app.get('/post/:id/edit', editPostController);
+
+
+
 app.use((req, res) => res.render('notfound'));
