@@ -61,13 +61,26 @@ app.use("*", (req, res, next) => {
 
 
 
-mongoose.connect('mongodb://localhost/my_database', {useNewUrlParser: true});
+mongoose.connect('mongodb+srv://marcus:Marcusiscool15!@cluster0-pan1z.mongodb.net/my_database', {useNewUrlParser: true});
 app.set('view engine', 'ejs'); //this is telling express to use ejs as our templating engine. any file ending in .ejs should be rendered with the EJS package
 //tells it that all static assets live in the public library
 app.use(express.static('public'));
-app.listen(4000,() => {
-  console.log('app listening on port 4000');
+
+//uncomment below for local use
+
+// app.listen(4000,() => {
+//   console.log('app listening on port 4000');
+// })
+
+let port = process.env.PORT;
+if (port == null || port == ""){
+  port = 4000;
+}
+
+app.listen(port, () =>{
+  console.log('App Listening...')
 })
+
 
 
 
