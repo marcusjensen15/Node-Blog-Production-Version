@@ -61,7 +61,7 @@ app.use("*", (req, res, next) => {
 
 
 
-mongoose.connect('mongodb://localhost/my_database', {useNewUrlParser: true});
+mongoose.connect('mongodb+srv://marcus:Marcusiscool15!@cluster0-pan1z.mongodb.net/my_database', {useNewUrlParser: true});
 app.set('view engine', 'ejs'); //this is telling express to use ejs as our templating engine. any file ending in .ejs should be rendered with the EJS package
 //tells it that all static assets live in the public library
 app.use(express.static('public'));

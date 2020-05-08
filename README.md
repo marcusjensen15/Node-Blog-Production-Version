@@ -7,6 +7,8 @@ Eventually, I will hide the 'New User' tab on the Navbar, as I don't want random
 # See the live deployed application here:
 
 
+
+
 ## Download and Installation
 
 To download and use the blog locally, follow the instructions below:
@@ -18,6 +20,9 @@ To download and use the blog locally, follow the instructions below:
 * Once all necessary NPM packages are installed, you may run this application locally by entering: 'npm run start' within the application directory.
 * With BOTH MongoDB Database and Application running locally, you can navigate to 'localhost:4000' to see the live application.
 * All blog posts, new users, etc will be stored inside of your local MongoDB database.
+
+* Database is hosted on mongodb.com (not HEROKU).
+* Application front-end is hosted on Heroku
 
 
 ## Bugs and Issues
