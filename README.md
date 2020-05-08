@@ -1,14 +1,17 @@
 # Notes on the application
 
-Personal blogging site for Marcus Jensen. The admin user can: login, edit posts, and delete posts. Any non-logged in user can see the posts, but don't have full CRUD functionality. 
+Personal blogging site for Marcus Jensen. The admin user can: login, edit posts, and delete posts. Any non-logged in user can see the posts, but don't have full CRUD functionality.
+
+Eventually, I will hide the 'New User' tab on the Navbar, as I don't want random people creating accounts, loggin in, and writing entries to my blog. As of now, this blog contains no real posts, and is a test deployment used for learning services.
+
+# See the live deployed application here:
+
 
 ## Download and Installation
 
-To begin using this template, choose one of the following options to get started:
-* [Download the latest release on Start Bootstrap](https://startbootstrap.com/template-overviews/clean-blog/)
-* Install via npm: `npm i startbootstrap-clean-blog`
-* Clone the repo: `git clone https://github.com/BlackrockDigital/startbootstrap-clean-blog.git`
-* [Fork, Clone, or Download on GitHub](https://github.com/BlackrockDigital/startbootstrap-clean-blog)
+To download and use the blog locally, follow the instructions below:
+* Clone this repo
+* In the home directory of your computer, make sure mongoDB is installed correctly. Enter: 'brew tap mongodb/brew', 'brew install mongodb-community' in your terminal. 
 
 ## Usage
 
