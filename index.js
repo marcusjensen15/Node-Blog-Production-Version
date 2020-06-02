@@ -85,14 +85,14 @@ app.listen(port, () =>{
 
 
 // app.post('/posts/store', storePostController);
-app.post('/users/register', redirectIfAuthenticatedMiddleware, storeUserController);
+// app.post('/users/register', redirectIfAuthenticatedMiddleware, storeUserController);
 app.post('/users/login', redirectIfAuthenticatedMiddleware, loginUserController);
 app.post('/posts/store', authMiddleware, storePostController);
 
 app.get('/post/:id', getPostController);
 app.get('/', homeController);
 app.get('/posts/new', newPostController);
-app.get('/auth/register', redirectIfAuthenticatedMiddleware, newUserController);
+// app.get('/auth/register', redirectIfAuthenticatedMiddleware, newUserController);
 app.get('/auth/login', redirectIfAuthenticatedMiddleware, loginController);
 app.get('/posts/new', authMiddleware, newPostController);
 app.get('/auth/logout', logoutController);

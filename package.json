@@ -5,7 +5,6 @@
   "scripts": {
     "start": "node index.js",
     "start:dev": "nodemon index.js"
-
   },
   "description": "Clean Blog is a Medium inspired blog theme for Bootstrap.",
   "keywords": [
@@ -22,7 +21,7 @@
     "email": "feedback@startbootstrap.com"
   },
   "license": "MIT",
-  "engines":{
+  "engines": {
     "node": "12.12.0"
   },
   "author": "Start Bootstrap",
