@@ -1,12 +1,17 @@
 const express = require('express');
 const app = new express();
+// import { keys } from './apikey.mjs';
 // const path = require('path');
+const key = require('./apikey');
+
 const ejs = require('ejs');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const fileUpload = require('express-fileupload');
 const expressSession = require('express-session');
 const flash = require('connect-flash');
+var favicon = require('serve-favicon');
+
 // const summernote = require('summernote');
 
 // const BlogPost = require('./models/BlogPost.js');
@@ -43,7 +48,7 @@ const customMiddleWare = (req,res,next) =>{
 //   }
 //   next();
 // }
-
+app.use(favicon(__dirname + '/public/img/favicon.ico'));
 app.use(flash());
 app.use(fileUpload());
 app.use(bodyParser.json());
@@ -61,7 +66,7 @@ app.use("*", (req, res, next) => {
 
 
 
-mongoose.connect('mongodb+srv://marcus:Marcusiscool15!@cluster0-pan1z.mongodb.net/my_database', {useNewUrlParser: true});
+mongoose.connect(key.keys, {useNewUrlParser: true});
 app.set('view engine', 'ejs'); //this is telling express to use ejs as our templating engine. any file ending in .ejs should be rendered with the EJS package
 //tells it that all static assets live in the public library
 app.use(express.static('public'));
