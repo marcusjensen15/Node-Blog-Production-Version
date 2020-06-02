@@ -7,6 +7,8 @@ const bodyParser = require('body-parser');
 const fileUpload = require('express-fileupload');
 const expressSession = require('express-session');
 const flash = require('connect-flash');
+var favicon = require('serve-favicon');
+
 // const summernote = require('summernote');
 
 // const BlogPost = require('./models/BlogPost.js');
@@ -43,7 +45,7 @@ const customMiddleWare = (req,res,next) =>{
 //   }
 //   next();
 // }
-
+app.use(favicon(__dirname + '/public/img/favicon.ico'));
 app.use(flash());
 app.use(fileUpload());
 app.use(bodyParser.json());
