@@ -1,5 +1,7 @@
 # Notes on the application
 
+IN THIS VERSION, REGISTER NEW USERS IS HIDDEN.
+
 Personal blogging site for Marcus Jensen. The admin user can: login, edit posts, and delete posts. Any non-logged in user can see the posts, but don't have full CRUD functionality.
 
 Eventually, I will hide the 'New User' tab on the Navbar, as I don't want random people creating accounts, loggin in, and writing entries to my blog. As of now, this blog contains no real posts, and is a test deployment used for learning services.
